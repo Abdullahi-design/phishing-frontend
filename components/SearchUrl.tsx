@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Loader from './Loader'
 import CreateSuccess from './CreateSuccess'
 import axios from 'axios';
+import Link from 'next/link';
 
 const SearchUrl = () => {
 
@@ -12,7 +13,7 @@ const SearchUrl = () => {
   const [brand, setBrand] = useState();
   const [disposition, setDisposition] = useState();
   const [error, setError] = useState();
-  const [insights, setInsights] = useState();
+  const [insights, setInsights] = useState<any>();
   const [job_id, setJob_id] = useState();
   const [resolved, setResolved] = useState();
   const [scanEnd, setScanEnd] = useState<any>();
@@ -154,7 +155,9 @@ const SearchUrl = () => {
               <p className='text-lg text-black'>Disposition: <span className='text-gray-700 text-sm'>{disposition}</span></p>
               <p className='text-lg text-black'>ScanStart: <span className='text-gray-700 text-sm'>{scanStart}</span></p>
               <p className='text-lg text-black'>ScanEnd: <span className='text-gray-700 text-sm'>{scanEnd}</span></p>
-              <button className='bg-emerald-500 hover:bg-emerald-700 flex  text-white px-4 py-2 rounded mt-4'>Click here to view full insights</button>
+              <Link href={insights} >
+                <button className='bg-emerald-500 hover:bg-emerald-700 flex  text-white px-4 py-2 rounded mt-4'>Click here to view full insights</button>
+              </Link>
             </div>
           )}
           {status == 'PENDING' &&(
